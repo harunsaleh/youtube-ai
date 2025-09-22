@@ -20,7 +20,7 @@ dependencies = [
 ]
 
 [project.scripts]
-youtube-ai-agent = "youtube_ai_agent.main:cli"
+youtube-ai-agent = "src.youtube_ai_agent.main:cli"
 
 [build-system]
 requires = ["hatchling"]

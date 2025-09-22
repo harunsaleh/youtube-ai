@@ -1,16 +1,16 @@
-import re
-from youtube_transcript_api import YouTubeTranscriptApi
-from youtube_transcript_api._errors import TranscriptsDisabled, NoTranscriptFound
-from typing import Optional, List
-from urllib.parse import urlparse, parse_qs
-from src.models.video import VideoTranscript, VideoInfo,TranscriptSegment
+from urllib.parse import parse_qs, urlparse
 
+from youtube_transcript_api import YouTubeTranscriptApi, NoTranscriptFound, TranscriptsDisabled
+
+from pydantic import HttpUrl
+
+from src.models.video import TranscriptSegment, VideoInfo, VideoTranscript
 
 
 class TranscriptService:
     """Service for fetching YouTube transcripts"""
 
-    def extract_video_id(self, url: str) -> Optional[str]:
+    def extract_video_id(self, url: str) -> str | None:
         """Extract video ID from YouTube URL"""
         parsed_url = urlparse(url)
 
@@ -22,16 +22,16 @@ class TranscriptService:
 
         return None
 
-    def fetch_transcript(self, url: str) -> Optional[VideoTranscript]:
+    def fetch_transcript(self, url: str) -> VideoTranscript | None:
         """Fetch transcript for YouTube video"""
         video_id = self.extract_video_id(url)
         if not video_id:
             return None
 
         try:
-            transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
+            api = YouTubeTranscriptApi()
+            transcript_list = api.list(video_id)
 
-            transcript = None
             try:
                 transcript = transcript_list.find_transcript(["de"])
             except NoTranscriptFound:
@@ -49,13 +49,15 @@ class TranscriptService:
 
             segments = [
                 TranscriptSegment(
-                    text=entry["text"], start=entry["start"], duration=entry["duration"]
+                    text=entry.text, start=entry.start, duration=entry.duration
                 )
                 for entry in transcript_data
             ]
 
             video_info = VideoInfo(
-                url=url, transcript_available=True, language=transcript.language_code
+                url=HttpUrl(url),
+                transcript_available=True,
+                language=getattr(transcript, "language_code", None),
             )
 
             return VideoTranscript(video_info=video_info, segments=segments)
@@ -66,5 +68,5 @@ class TranscriptService:
     def format_timestamp(self, seconds: float) -> str:
         """Convert seconds to MM:SS format"""
         minutes = int(seconds // 60)
-        seconds = int(seconds % 60)
-        return f"{minutes:02d}:{seconds:02d}"
+        remaining_seconds = int(seconds % 60)
+        return f"{minutes:02d}:{remaining_seconds:02d}"

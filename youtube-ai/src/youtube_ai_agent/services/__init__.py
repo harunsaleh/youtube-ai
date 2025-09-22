@@ -1,6 +1,6 @@
 """Services package for YouTube AI Agent."""
 
-from transcript import TranscriptService
+from src.youtube_ai_agent.services.transcript import TranscriptService
 
 __all__ = [
     "TranscriptService",

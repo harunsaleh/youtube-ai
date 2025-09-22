@@ -1,12 +1,13 @@
-from pydantic import BaseSettings, Field
-from typing import Optional
+from pydantic import Field
+from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
     """Application settings"""
 
     # AI Provider Configuration
-    openai_api_key: Optional[str] = Field(None, env="OPENAI_API_KEY")
+    openai_api_key: str | None = Field(None, env="OPENAI_API_KEY")
+    anthropic_api_key: str | None = Field(None, env="ANTHROPIC_API_KEY")
     ai_provider: str = Field("openai", env="AI_PROVIDER")
     ai_model: str = Field("gpt-4o-mini", env="AI_MODEL")
 

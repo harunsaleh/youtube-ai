@@ -4,14 +4,14 @@ Ein schlanker AI-Agent, der aus YouTube-Video-Transkripten strukturierte Markdow
 
 ## 🚀 Features
 
-- ✅ Automatische Transkript-Extraktion von YouTube-Videos
-- ✅ Claude-basierte Inhaltsanalyse und Zusammenfassung  
-- ✅ Strukturierte Markdown-Ausgabe (TL;DR, Kernaussagen, Gliederung)
-- ✅ Unterstützung für deutsche und englische Videos
-- ✅ Zeitstempel-basierte Zitate (optional)
-- ✅ CLI-Interface mit ausführlicher Hilfe
-- ✅ Zusätzliche Sektionen (Glossar, offene Fragen, nächste Schritte)
-- ✅ Konfigurierbare Ausgabe-Verzeichnisse und AI-Modelle
+✅ Automatische Transkript-Extraktion von YouTube-Videos
+✅ Claude-basierte Inhaltsanalyse und Zusammenfassung  
+✅ Strukturierte Markdown-Ausgabe (TL;DR, Kernaussagen, Gliederung)
+✅ Unterstützung für deutsche und englische Videos
+✅ Zeitstempel-basierte Zitate (optional)
+✅ CLI-Interface mit ausführlicher Hilfe
+✅ Zusätzliche Sektionen (Glossar, offene Fragen, nächste Schritte)
+✅ Konfigurierbare Ausgabe-Verzeichnisse und AI-Modelle
 
 ## 📦 Installation
 

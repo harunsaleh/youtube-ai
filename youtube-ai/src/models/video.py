@@ -1,6 +1,5 @@
 from pydantic import BaseModel, HttpUrl, Field
 from typing import Optional, List
-from datetime import datetime
 
 class VideoInfo(BaseModel):
     """Video metadata model"""

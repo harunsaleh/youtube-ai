@@ -1,24 +1,29 @@
-from pydantic import BaseModel, HttpUrl, Field
-from typing import Optional, List
+from pydantic import BaseModel, Field, HttpUrl
+
 
 class VideoInfo(BaseModel):
     """Video metadata model"""
+
     url: HttpUrl
-    title: Optional[str] = None
-    duration: Optional[int] = None  # in seconds
+    title: str | None = None
+    duration: int | None = None  # in seconds
     transcript_available: bool = False
-    language: Optional[str] = None
+    language: str | None = None
+
 
 class TranscriptSegment(BaseModel):
     """Single transcript segment with timestamp"""
+
     text: str
     start: float
     duration: float
 
+
 class VideoTranscript(BaseModel):
     """Complete video transcript"""
+
     video_info: VideoInfo
-    segments: List[TranscriptSegment]
+    segments: list[TranscriptSegment]
     full_text: str = Field(default="")
 
     def model_post_init(self, __context) -> None:

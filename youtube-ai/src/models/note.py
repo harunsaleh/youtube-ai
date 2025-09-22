@@ -1,6 +1,7 @@
-from pydantic import BaseModel, Field
-from typing import List, Optional
 from datetime import datetime
+from typing import Annotated
+
+from pydantic import BaseModel, Field
 
 
 class Quote(BaseModel):
@@ -15,10 +16,10 @@ class MarkdownNote(BaseModel):
 
     title: str
     source_url: str
-    tldr: List[str] = Field(min_items=3, max_items=5)
-    key_points: List[str] = Field(min_items=1)
-    outline: List[str] = Field(min_items=1)
-    quotes: List[Quote] = Field(default_factory=list)
+    tldr: Annotated[list[str], Field(min_length=3, max_length=5)]
+    key_points: Annotated[list[str], Field(min_length=1)]
+    outline: Annotated[list[str], Field(min_length=1)]
+    quotes: list[Quote] = Field(default_factory=list)
     additional_sections: dict = Field(default_factory=dict)
     generated_at: datetime = Field(default_factory=datetime.now)
 
@@ -61,3 +62,5 @@ class MarkdownNote(BaseModel):
             else:
                 md_content += f"{content}\n"
             md_content += "\n"
+
+        return md_content

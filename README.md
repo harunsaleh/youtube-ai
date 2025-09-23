@@ -184,5 +184,5 @@ Dateien werden automatisch benannt basierend auf dem Video-Titel:
 - Funktioniert nur mit öffentlichen YouTube-Videos
 - Benötigt verfügbare Untertitel/Transkripte
 - Maximale Transkript-Länge: 15.000 Zeichen (konfigurierbar)
-- Abhängig von Anthropic API Rate Limits
-- Qualität abhängig vom gewählten Claude-Modell
+- Abhängig von OpenAI/Anthropic API Rate Limits
+- Qualität abhängig vom gewählten OpenAI-Modell/Claude-Modell

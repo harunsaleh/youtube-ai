@@ -39,7 +39,7 @@ uv sync
 youtube-ai-agent setup
 
 # Oder manuell .env erstellen
-cp .env.example .env
+cp .env .env
 ```
 
 Trage deinen OpenAI API Key in `.env` ein:

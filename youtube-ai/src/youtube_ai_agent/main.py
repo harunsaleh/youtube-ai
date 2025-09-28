@@ -115,7 +115,7 @@ def setup():
 
     # Create .env template if it doesn't exist
     if not os.path.exists(".env"):
-        with open(".env.example", "w") as f:
+        with open(".env", "w") as f:
             f.write("""# AI Provider Configuration
 OPENAI_API_KEY=your_openai_api_key_here
 AI_PROVIDER=openai
@@ -127,7 +127,7 @@ OUTPUT_DIR=output
 # Processing Configuration
 MAX_TRANSCRIPT_LENGTH=10000
 """)
-        click.echo("Created .env.example - copy to .env and fill in your API keys")
+        click.echo("Created .env - copy to .env and fill in your API keys")
 
 
 cli.add_command(process_video)

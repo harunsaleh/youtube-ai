@@ -1,11 +1,11 @@
 # YouTube AI Agent
 
-Ein schlanker AI-Agent, der aus YouTube-Video-Transkripten strukturierte Markdown-Notizen mit Claude generiert.
+Ein schlanker AI-Agent, der aus YouTube-Video-Transkripten strukturierte Markdown-Notizen mit OpenAI generiert.
 
 ## 🚀 Features
 
 - ✅ Automatische Transkript-Extraktion von YouTube-Videos
-- ✅ Claude-basierte Inhaltsanalyse und Zusammenfassung  
+- ✅ OpenAI-basierte Inhaltsanalyse und Zusammenfassung  
 - ✅ Strukturierte Markdown-Ausgabe (TL;DR, Kernaussagen, Gliederung)
 - ✅ Unterstützung für deutsche und englische Videos
 - ✅ Zeitstempel-basierte Zitate (optional)
@@ -42,13 +42,12 @@ youtube-ai-agent setup
 cp .env.example .env
 ```
 
-Trage deinen Anthropic/OpenAI API Key in `.env` ein:
+Trage deinen OpenAI API Key in `.env` ein:
 ```env
 # AI Provider Configuration
 OPENAI_API_KEY=your_openai_api_key_here
-ANTHROPIC_API_KEY=your_anthropic_api_key_here
-AI_PROVIDER=openai/anthropic
-AI_MODEL=gpt-4o-mini/claude-3-5-sonnet-20241022
+AI_PROVIDER=openai
+AI_MODEL=gpt-4o-mini/
 
 # Output Configuration
 OUTPUT_DIR=output
@@ -106,9 +105,9 @@ youtube-ai-agent process-video \
   --output-dir ./my-notes \
   "https://www.youtube.com/watch?v=VIDEO_ID"
 
-# Mit anderem Claude-Modell
+# Mit anderem OPENAI-Modell
 youtube-ai-agent process-video \
-  --model claude-3-5-sonnet-20241022 \
+  --model gpt-4o-mini \
   --verbose \
   "https://www.youtube.com/watch?v=VIDEO_ID"
 
@@ -183,6 +182,6 @@ Dateien werden automatisch benannt basierend auf dem Video-Titel:
 
 - Funktioniert nur mit öffentlichen YouTube-Videos
 - Benötigt verfügbare Untertitel/Transkripte
-- Maximale Transkript-Länge: 15.000 Zeichen (konfigurierbar)
-- Abhängig von Anthropic API Rate Limits
-- Qualität abhängig vom gewählten Claude-Modell
+- Maximale Transkript-Länge: 15.000 Zeichen
+- Abhängig von OpenAI API Rate Limits
+- Qualität abhängig vom gewählten OpenAI-Modell

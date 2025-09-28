@@ -109,11 +109,6 @@ def setup():
     else:
         click.echo("[MISSING] OpenAI API key not found (set OPENAI_API_KEY)")
 
-    if settings.anthropic_api_key:
-        click.echo("[OK] Anthropic API key found")
-    else:
-        click.echo("[MISSING] Anthropic API key not found (set ANTHROPIC_API_KEY)")
-
     click.echo(f"Current AI provider: {settings.ai_provider}")
     click.echo(f"Current model: {settings.ai_model}")
     click.echo(f"Output directory: {settings.output_dir}")
@@ -123,7 +118,6 @@ def setup():
         with open(".env.example", "w") as f:
             f.write("""# AI Provider Configuration
 OPENAI_API_KEY=your_openai_api_key_here
-ANTHROPIC_API_KEY=your_anthropic_api_key_here
 AI_PROVIDER=openai
 AI_MODEL=gpt-4o-mini
 

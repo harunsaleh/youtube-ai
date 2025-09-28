@@ -8,7 +8,7 @@ Ein schlanker AI-Agent, der aus YouTube-Video-Transkripten strukturierte Markdow
 - ✅ OpenAI-basierte Inhaltsanalyse und Zusammenfassung  
 - ✅ Strukturierte Markdown-Ausgabe (TL;DR, Kernaussagen, Gliederung)
 - ✅ Unterstützung für deutsche und englische Videos
-- ✅ Zeitstempel-basierte Zitate (optional)
+- ✅ Zeitstempel-basierte Zitate
 - ✅ CLI-Interface mit ausführlicher Hilfe
 - ✅ Zusätzliche Sektionen (Glossar, offene Fragen, nächste Schritte)
 - ✅ Konfigurierbare Ausgabe-Verzeichnisse und AI-Modelle
